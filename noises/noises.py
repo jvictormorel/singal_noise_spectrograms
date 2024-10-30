@@ -4,21 +4,13 @@ from IPython.display import Audio
 import librosa
 import librosa.display
 
-# high quality graphics
-
-plt.rcParams['figure.dpi'] = 300
-
 # find the sampling rate of signals
 
-noise_babble, fs_babble = librosa.load('babble.wav', sr=None)
+noise_babble, fs_babble = librosa.load(r'C:\Users\jvmor\OneDrive\Área de Trabalho\códigos_PIBIC_2024_2025\singal_noise_spectrograms\noises\babble.wav', sr=None)
 
-noise_cafeteria, fs_cafeteria = librosa.load('cafeteria.wav', sr=None)
+noise_cafeteria, fs_cafeteria = librosa.load(r'C:\Users\jvmor\OneDrive\Área de Trabalho\códigos_PIBIC_2024_2025\singal_noise_spectrograms\noises\cafeteria.wav', sr=None)
 
-noise_factory, fs_factory = librosa.load('factory.wav', sr=None)
-
-audio_clean, fs_clean = librosa.load('clean_speech.wav', sr=None)
-
-audio_signal_5, fs_5 = librosa.load('speech_babble_0db.wav', sr=None)
+noise_factory, fs_factory = librosa.load(r'C:\Users\jvmor\OneDrive\Área de Trabalho\códigos_PIBIC_2024_2025\singal_noise_spectrograms\noises\factory.wav', sr=None)
 
 # noise's spectograms
 
@@ -49,41 +41,34 @@ plt.colorbar(format='%+2.0f dB')
 plt.title('Factory Spectrogram')
 plt.show()
 
-# speech's spectograms
-
-D_4 = librosa.amplitude_to_db(np.abs(librosa.stft(audio_signal_4)))
-plt.figure(figsize=(10, 4))
-librosa.display.specshow(D_4, x_axis='time', y_axis='linear', sr=fs_4, cmap='jet')
-plt.xlabel('Time [s]')
-plt.ylabel('Frequency [Hz]')
-plt.colorbar(format='%+2.0f dB')
-plt.title('Spectrogram speech')
-plt.show()
-
-D_5 = librosa.amplitude_to_db(np.abs(librosa.stft(audio_signal_5)))
-plt.figure(figsize=(10, 4))
-librosa.display.specshow(D_5, x_axis='time', y_axis='linear', sr=fs_5, cmap='jet')
-plt.xlabel('Time [s]')
-plt.ylabel('Frequency [Hz]')
-plt.colorbar(format='%+2.0f dB')
-plt.title('Spectrogram speech_babble')
-plt.show()
-
 # amplitude x time
 
-time = np.linspace(0, len(audio_signal_1) / fs_1, num=len(audio_signal_1))
+time = np.linspace(0, len(noise_babble) / fs_babble, num=len(noise_babble))
 plt.figure(figsize=(12, 4))
-plt.plot(time, audio_signal_1, color='blue')
-plt.title('Sinal de Áudio no Tempo')
-plt.xlabel('Tempo (s)')
+plt.plot(time, noise_babble, color='blue')
+plt.title('Babble')
+plt.xlabel('Time (s)')
 plt.ylabel('Amplitude')
 plt.xlim(0, time[-1])  
 plt.grid()
 plt.show()
 
+time = np.linspace(0, len(noise_cafeteria) / fs_cafeteria, num=len(noise_cafeteria))
+plt.figure(figsize=(12, 4))
+plt.plot(time, noise_cafeteria, color='blue')
+plt.title('Cafeteria')
+plt.xlabel('Time (s)')
+plt.ylabel('Amplitude')
+plt.xlim(0, time[-1])  
+plt.grid()
+plt.show()
 
-
-
-
-
-
+time = np.linspace(0, len(noise_factory) / fs_factory, num=len(noise_factory))
+plt.figure(figsize=(12, 4))
+plt.plot(time, noise_factory, color='blue')
+plt.title('Factory')
+plt.xlabel('Time (s)')
+plt.ylabel('Amplitude')
+plt.xlim(0, time[-1])  
+plt.grid()
+plt.show()
