@@ -3,16 +3,22 @@ import matplotlib.pyplot as plt
 from IPython.display import Audio
 import librosa
 import librosa.display
+import os
+
+# finding the directory containing the ".py" file
+
+python_file_dir = os.path.dirname(os.path.realpath(__file__))
+clean_speech_path = os.path.join(python_file_dir, 'clean_speech.wav')
+babble_0dB_path = os.path.join(python_file_dir, 'speech_babble_0dB.wav')
+babble_5dB_path = os.path.join(python_file_dir, 'speech_babble_5dB.wav')
+babble_m5dB_path = os.path.join(python_file_dir, 'speech_babble_m5dB.wav')
 
 # find the sampling rate of signals
 
-clean_speech, fs_clean_speech = librosa.load(r'C:\Users\jvmor\OneDrive\Área de Trabalho\códigos_PIBIC_2024_2025\singal_noise_spectrograms\speech_babble\clean_speech.wav', sr=None)
-
-babble_0dB, fs_0dB = librosa.load(r'C:\Users\jvmor\OneDrive\Área de Trabalho\códigos_PIBIC_2024_2025\singal_noise_spectrograms\speech_babble\speech_babble_0dB.wav', sr=None)
-
-babble_5dB, fs_5dB = librosa.load(r'C:\Users\jvmor\OneDrive\Área de Trabalho\códigos_PIBIC_2024_2025\singal_noise_spectrograms\speech_babble\speech_babble_5dB.wav', sr=None)
-
-babble_m5dB, fs_m5dB = librosa.load(r'C:\Users\jvmor\OneDrive\Área de Trabalho\códigos_PIBIC_2024_2025\singal_noise_spectrograms\speech_babble\speech_babble_m5dB.wav', sr=None)
+clean_speech, fs_clean_speech = librosa.load(clean_speech_path, sr=None)
+babble_0dB, fs_0dB = librosa.load(babble_0dB_path, sr=None)
+babble_5dB, fs_5dB = librosa.load(babble_5dB_path, sr=None)
+babble_m5dB, fs_m5dB = librosa.load(babble_m5dB_path, sr=None)
 
 # noise's spectograms
 

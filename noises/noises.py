@@ -3,14 +3,20 @@ import matplotlib.pyplot as plt
 from IPython.display import Audio
 import librosa
 import librosa.display
+import os
 
-# find the sampling rate of signals
+# finding the directory containing the ".py" file
 
-noise_babble, fs_babble = librosa.load(r'C:\Users\jvmor\OneDrive\Área de Trabalho\códigos_PIBIC_2024_2025\singal_noise_spectrograms\noises\babble.wav', sr=None)
+python_file_dir = os.path.dirname(os.path.realpath(__file__))
+babble_path = os.path.join(python_file_dir, 'babble.wav')
+cafeteria_path = os.path.join(python_file_dir, 'cafeteria.wav')
+factory_path = os.path.join(python_file_dir, 'factory.wav')
 
-noise_cafeteria, fs_cafeteria = librosa.load(r'C:\Users\jvmor\OneDrive\Área de Trabalho\códigos_PIBIC_2024_2025\singal_noise_spectrograms\noises\cafeteria.wav', sr=None)
+# finding the sampling rate of signals
 
-noise_factory, fs_factory = librosa.load(r'C:\Users\jvmor\OneDrive\Área de Trabalho\códigos_PIBIC_2024_2025\singal_noise_spectrograms\noises\factory.wav', sr=None)
+noise_babble, fs_babble = librosa.load(babble_path, sr=None)
+noise_cafeteria, fs_cafeteria = librosa.load(cafeteria_path, sr=None)
+noise_factory, fs_factory = librosa.load(factory_path, sr=None)
 
 # noise's spectograms
 
